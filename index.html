@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Para o Amor da Minha Vida ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family: Arial, sans-serif;
+text-align:center;
+color:white;
+background: linear-gradient(135deg,#ff6a88,#ff99ac);
+overflow-x:hidden;
+}
+
+.container{
+padding:40px;
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+max-width:600px;
+margin:auto;
+margin-bottom:20px;
+}
+
+.slideshow{
+max-width:500px;
+margin:auto;
+position:relative;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+button{
+margin-top:25px;
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:white;
+color:#ff4b7d;
+cursor:pointer;
+}
+
+#pista{
+margin-top:25px;
+font-size:20px;
+font-weight:bold;
+}
+
+/* corações */
+
+.heart{
+position:fixed;
+bottom:-10px;
+color:#ff2e63;
+font-size:20px;
+animation: subir 6s linear infinite;
+}
+
+@keyframes subir{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Oi meu amor ❤️</h1>
+
+<p>
+Se você encontrou esse QR Code, é porque nossa pequena aventura começou.
+<br><br>
+Eu queria te lembrar de alguns momentos que fazem você ser tão especial pra mim.
+</p>
+
+<div class="slideshow">
+
+<div class="slide">
+<img src="beijo_nos.jpeg">
+</div>
+
+<div class="slide">
+<img src="casamento.jpeg">
+</div>
+
+<div class="slide">
+<img src="lanche.jpeg">
+</div>
+
+<div class="slide">
+<img src="milk_milho.jpeg">
+</div>
+
+<div class="slide">
+<img src="natal_car.jpeg">
+</div>
+
+</div>
+
+<button onclick="mostrarPista()">Ver próxima pista 🔎</button>
+
+<div id="pista"></div>
+
+</div>
+
+<script>
+
+/* slideshow */
+
+let slideIndex = 0;
+
+function mostrarSlides(){
+let slides = document.getElementsByClassName("slide");
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+setTimeout(mostrarSlides,3000);
+}
+
+mostrarSlides();
+
+/* pista */
+
+function mostrarPista(){
+
+document.getElementById("pista").innerText =
+"A próxima pista está onde a gente guarda as coisas geladas 😉";
+
+}
+
+/* corações */
+
+function criarCoracao(){
+
+let coracao=document.createElement("div");
+
+coracao.classList.add("heart");
+
+coracao.style.left=Math.random()*100+"vw";
+
+coracao.style.fontSize=Math.random()*20+10+"px";
+
+coracao.innerText="❤️";
+
+document.body.appendChild(coracao);
+
+setTimeout(()=>{
+coracao.remove();
+},6000)
+
+}
+
+setInterval(criarCoracao,300);
+
+</script>
+
+</body>
+</html>
