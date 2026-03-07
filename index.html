@@ -2,52 +2,69 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Para o amor da minha vida ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para o Amor da Minha Vida ❤️</title>
 
 <style>
 
 body{
-font-family: Arial;
-background: linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 margin:0;
-color:white;
-text-align:center;
-overflow-x:hidden;
 }
 
 .container{
-padding:40px 20px;
+background:white;
+padding:30px;
+border-radius:20px;
 max-width:600px;
-margin:auto;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
 h1{
-font-size:32px;
+color:#ff4d6d;
 }
 
-#mensagem{
-margin-top:20px;
-font-size:18px;
-min-height:120px;
+.fotos{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:20px;
 }
 
-img{
+.fotos img{
 width:100%;
-border-radius:15px;
-margin-top:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+border-radius:10px;
 }
 
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation: subir 6s linear forwards;
+.fotos img:nth-child(5){
+grid-column:span 2;
 }
 
-@keyframes subir{
-0%{transform:translateY(0);opacity:1}
-100%{transform:translateY(-120vh);opacity:0}
+.mensagem{
+font-size:18px;
+color:#444;
+min-height:120px;
+white-space:pre-line;
+}
+
+.cursor{
+display:inline-block;
+width:2px;
+background:black;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
 }
 
 </style>
@@ -57,71 +74,57 @@ animation: subir 6s linear forwards;
 
 <div class="container">
 
-<h1>Oi meu amor ❤️</h1>
+<h1>Para o Amor da Minha Vida ❤️</h1>
 
-<p id="mensagem"></p>
+<div class="fotos">
 
-<img src="casamento.jpeg">
-<img src="beijo nos.jpeg">
-<img src="lanche.jpeg">
-<img src="natal car.jpeg">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+
+</div>
+
+<div class="mensagem" id="mensagem"></div>
 
 </div>
 
 <script>
 
-/* mensagem digitando */
+const texto = `Feliz Dia da Mulher ❤️
 
-const texto = `Desde que você entrou na minha vida
-tudo ficou mais bonito.
+Hoje eu só queria te lembrar de uma coisa...
 
-Cada risada sua,
-cada momento juntos,
-cada memória que a gente criou...
+Você é uma das pessoas mais incríveis que já apareceu na minha vida.
 
-Tudo isso é muito especial pra mim.
+Cada momento com você é especial.
 
-Obrigado por estar comigo,
-por me apoiar,
-por ser quem você é, e me suportar.
+Cada risada, cada conversa, cada abraço.
 
-Eu te amo ❤️`;
+Obrigado por existir.
+Obrigado por estar comigo.
 
-let i = 0;
+Eu te amo muito. ❤️`;
+
+let i = 0
+const velocidade = 40
 
 function escrever(){
 
 if(i < texto.length){
-document.getElementById("mensagem").innerHTML += texto.charAt(i);
-i++;
-setTimeout(escrever,40);
-}
+
+document.getElementById("mensagem").innerHTML += texto.charAt(i)
+
+i++
+
+setTimeout(escrever, velocidade)
 
 }
 
-escrever();
-
-/* corações subindo */
-
-function criarCoracao(){
-
-const coracao = document.createElement("div");
-
-coracao.classList.add("heart");
-
-coracao.style.left = Math.random()*100 + "vw";
-
-coracao.innerText="❤️";
-
-document.body.appendChild(coracao);
-
-setTimeout(()=>{
-coracao.remove();
-},6000);
-
 }
 
-setInterval(criarCoracao,400);
+escrever()
 
 </script>
 
