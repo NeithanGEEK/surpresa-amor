@@ -13,9 +13,11 @@ font-family: Arial, sans-serif;
 background: linear-gradient(135deg,#ff9a9e,#fad0c4);
 display:flex;
 justify-content:center;
-align-items:center;
-height:100vh;
+align-items:flex-start;
+min-height:100vh;
+padding-top:40px;
 margin:0;
+overflow-x:hidden;
 }
 
 .container{
@@ -29,22 +31,26 @@ box-shadow:0 10px 30px rgba(0,0,0,0.2);
 
 h1{
 color:#ff4d6d;
+margin-bottom:20px;
 }
 
 .fotos{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:15px;
 margin-bottom:20px;
 }
 
-.fotos img{
+.foto img{
 width:100%;
 border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
 
-.fotos img:nth-child(5){
-grid-column:span 2;
+.foto p{
+font-size:14px;
+margin-top:5px;
+color:#666;
 }
 
 .mensagem{
@@ -52,19 +58,29 @@ font-size:18px;
 color:#444;
 min-height:120px;
 white-space:pre-line;
+margin-top:10px;
 }
 
-.cursor{
-display:inline-block;
-width:2px;
-background:black;
-animation:blink 1s infinite;
+/* corações */
+
+.coracao{
+position:fixed;
+top:-10px;
+color:#ff4d6d;
+animation:cair 6s linear infinite;
+font-size:20px;
+pointer-events:none;
 }
 
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0;}
-100%{opacity:1;}
+@keyframes cair{
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
 }
 
 </style>
@@ -90,12 +106,12 @@ animation:blink 1s infinite;
 
 <div class="foto">
 <img src="foto3.jpeg">
-<p>Até os momentos simples são especiais com você 🥰</p>
+<p>cada memoria ao seu lado é um presente 🥰</p>
 </div>
 
 <div class="foto">
 <img src="foto4.jpeg">
-<p>Cada memória ao seu lado é um presente 🎄❤️</p>
+<p>Até os momentos simples são especiais com você ❤️</p>
 </div>
 
 </div>
@@ -105,6 +121,8 @@ animation:blink 1s infinite;
 </div>
 
 <script>
+
+/* mensagem digitando */
 
 const texto = `Feliz Dia da Mulher ❤️
 
@@ -119,7 +137,7 @@ Cada risada, cada conversa, cada abraço.
 Obrigado por existir.
 Obrigado por estar comigo.
 
-Eu te amo muito. ❤️`;
+Eu te amo muito. ❤️`
 
 let i = 0
 const velocidade = 40
@@ -139,6 +157,30 @@ setTimeout(escrever, velocidade)
 }
 
 escrever()
+
+/* corações caindo */
+
+function criarCoracao(){
+
+const coracao = document.createElement("div")
+
+coracao.classList.add("coracao")
+
+coracao.innerHTML = "❤️"
+
+coracao.style.left = Math.random()*100 + "vw"
+
+coracao.style.fontSize = Math.random()*10 + 15 + "px"
+
+document.body.appendChild(coracao)
+
+setTimeout(()=>{
+coracao.remove()
+},6000)
+
+}
+
+setInterval(criarCoracao,500)
 
 </script>
 
